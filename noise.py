@@ -241,7 +241,7 @@ class S4_LAT(SOLatBase):
                  survey_years=7.,
                  survey_efficiency=0.25,
                  el=40,
-                 ellmax=8000):
+                 ellmax=8000,deconv=False):
         # Define the instrument.
         self.fsky=fsky
         self.n_bands = 7
@@ -284,7 +284,7 @@ class S4_LAT(SOLatBase):
             
         self.precompute(ref_tubes, N_tels)
         
-        self.ell, self.N_ell_LA_T_full,self.N_ell_LA_P_full = self.get_noise_curves( self.fsky, self.ellmax, 1, full_covar=True, deconv_beam=False)
+        self.ell, self.N_ell_LA_T_full,self.N_ell_LA_P_full = self.get_noise_curves( self.fsky, self.ellmax, 1, full_covar=True, deconv_beam=deconv)
     
     def creturn(self,ndarray,typ='ndarray'):
         if typ == 'ndarray':
